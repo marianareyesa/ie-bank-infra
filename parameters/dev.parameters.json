@@ -6,19 +6,19 @@
             "value": "nonprod"
         },
         "postgreSQLServerName": {
-            "value": "aguadamillas-dbsrv-dev"
+            "value": "marianareyesa-dbsrv-dev"
         },
         "postgreSQLDatabaseName": {
-            "value": "aguadamillas-db-dev"
+            "value": "marianareyesa-db-dev"
         },
         "appServicePlanName": {
-            "value": "aguadamillas-asp-dev"
+            "value": "marianareyesa-asp-dev"
         },
         "appServiceAPIAppName": {
-            "value": "aguadamillas-be-dev"
+            "value": "marianareyesa-be-dev"
         },
         "appServiceAppName": {
-            "value": "aguadamillas-fe-dev"
+            "value": "marianareyesa-fe-dev"
         },
         "location": {
             "value": "North Europe"
