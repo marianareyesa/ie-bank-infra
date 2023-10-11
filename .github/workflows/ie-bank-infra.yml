@@ -4,7 +4,9 @@ on: [push, workflow_dispatch]
 
 env:
   RESOURCE_GROUP_DEV: aguadamillas_students_1
+  RESOURCE_GROUP_UAT: aguadamillas_students_1
   SUBSCRIPTION_ID_DEV: e0b9cada-61bc-4b5a-bd7a-52c606726b3b
+  SUBSCRIPTION_ID_UAT: e0b9cada-61bc-4b5a-bd7a-52c606726b3b
   USERALIAS: marianareyesa
 
 jobs:
@@ -45,3 +47,39 @@ jobs:
         template: ./main.bicep
         parameters: ./parameters/dev.parameters.json appServiceAPIEnvVarENV=${{ vars.ENV }} appServiceAPIEnvVarDBHOST=${{ vars.DBHOST }} appServiceAPIEnvVarDBNAME=${{ vars.DBNAME }} appServiceAPIEnvVarDBPASS=${{ secrets.DBPASS }} appServiceAPIDBHostDBUSER=${{ secrets.DBUSER }} appServiceAPIDBHostFLASK_APP=${{ vars.FLASK_APP }} appServiceAPIDBHostFLASK_DEBUG=${{ vars.FLASK_DEBUG }} 
         deploymentName: ${{ env.USERALIAS }}
+
+  deploy-uat:
+    #   if: github.ref == 'refs/heads/dev'
+        runs-on: ubuntu-latest
+        needs: [build, deploy-dev]
+        if: github.ref == 'refs/heads/main'
+        environment:
+          name: 'User Acceptance Testing'
+        env:
+          ENV: uat
+          DBHOST: mreyes-dbsrv-uat.postgres.database.azure.com
+          DBNAME: mreyes-db-uat
+          FLASK_APP: app.py
+          FLASK_DEBUG: 1
+
+        steps:
+
+          # Checkout code
+        -  uses: actions/checkout@main
+          
+          # Log into Azure
+        - uses: azure/login@v1
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+          # Deploy Bicep file
+        - name: deploy
+          uses: azure/arm-deploy@v1
+          env:
+            ENV: new-var
+          with:
+              subscriptionId: ${{ env.SUBSCRIPTION_ID_UAT }}
+              resourceGroupName: ${{ env.RESOURCE_GROUP_UAT }}
+              template: ./main.bicep
+              parameters: ./parameters/uat.parameters.json appServiceAPIEnvVarENV=${{ env.ENV }} appServiceAPIEnvVarDBHOST=${{ env.DBHOST }} appServiceAPIEnvVarDBNAME=${{ env.DBNAME }} appServiceAPIEnvVarDBPASS=${{ secrets.DBPASS }} appServiceAPIDBHostDBUSER=${{ secrets.DBUSER }} appServiceAPIDBHostFLASK_APP=${{ env.FLASK_APP }} appServiceAPIDBHostFLASK_DEBUG=${{ env.FLASK_DEBUG }} 
+              deploymentName: ${{ env.USERALIAS }}
