@@ -20,6 +20,12 @@
         "appServiceAppName": {
             "value": "marianareyesa-fe-uat"
         },
+        "azureMonitorName": {
+            "value": "marianareyesa-am-uat"
+          },
+          "appInsightsName": {
+            "value": "marianareyesa-ai-uat"
+          },
         "location": {
             "value": "North Central US"
         }
