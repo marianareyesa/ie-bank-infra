@@ -15,13 +15,13 @@
                 "value": "Free"
             },
             "repositoryUrl": {
-                "value": "https://github.com/<YOUR-GITHUB-USER-NAME>/<YOUR-GITHUB-REPOSITORY-NAME>"
+                "value": "https://github.com/marianareyesa/ie-bank-infra"
             },
             "branch": {
                 "value": "main"
             },
             "repositoryToken": {
-                "value": "<YOUR-GITHUB-PAT>" 
+                "value": "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" 
             },
             "appLocation": {
                 "value": "/"
