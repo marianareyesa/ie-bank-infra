@@ -3,7 +3,7 @@
         "contentVersion": "1.0.0.0",
         "parameters": {
             "name": {
-                "value": "myfirstswadeployment"
+                "value": "ie-bank-infra"
             },
             "location": { 
                 "value": "Central US"
@@ -36,7 +36,7 @@
                 "value": {
                     "Environment": "Development",
                     "Project": "Testing SWA with ARM",
-                    "ApplicationName": "myfirstswadeployment"
+                    "ApplicationName": "ie-bank-infra"
                 }
             },
             "appSettings": {
