@@ -13,7 +13,7 @@
   - [Continuos Delivery](#continuos-delivery)
     - [GitHub secrets](#github-secrets)
     - [GitHub variables](#github-variables)
-
+s
 ## Overview
 
 This is the repository for the infrastructure code of the IE Bank web app
