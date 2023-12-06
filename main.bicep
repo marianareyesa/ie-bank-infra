@@ -46,15 +46,6 @@ param appServiceAPIDBHostFLASK_APP string
 @sys.description('The value for the environment variable FLASK_DEBUG')
 param appServiceAPIDBHostFLASK_DEBUG string
 
-
-param acrname string 
-param webAppName string ='TEAM3-webapp'
-param containerRegistryImageName string = 'flask-demo'
-param containerRegistryImageVersion string = 'latest'
-param DOCKER_REGISTRY_SERVER_USERNAME string 
-@secure()
-param DOCKER_REGISTRY_SERVER_PASSWORD string
-
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
   location: location
@@ -137,32 +128,3 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 } 
 
-module site 'ResourceModules-main 2/modules/web/site/main.bicep' = {
-  name: 'siteModule'
-  params: {
-    kind: 'app'
-    name: webAppName
-    location: location
-    serverFarmResourceId: resourceId('Microsoft.Web/serverfarms', appServicePlanName)
-    siteConfig: {
-      linuxFxVersion: 'DOCKER|${acrname}.azurecr.io/${containerRegistryImageName }:${containerRegistryImageVersion}'
-      appCommandLine: ''
-    }
-    appSettingsKeyValuePairs : {
-      WEBSITES_ENABLE_APP_SERVICE_STORAGE: false
-      DOCKER_REGISTRY_SERVER_URL: 'https://${acrname}.azurecr.io'
-      DOCKER_REGISTRY_SERVER_USERNAME: DOCKER_REGISTRY_SERVER_USERNAME
-      DOCKER_REGISTRY_SERVER_PASSWORD: DOCKER_REGISTRY_SERVER_PASSWORD
-    }
-  }
-}
-
-
-module registry 'ResourceModules-main 2/modules/container-registry/registry/main.bicep' = {
-  name: acrname
-  params: {
-    name: acrname
-    location: location
-    acrAdminUserEnabled: true
-  }
-}
