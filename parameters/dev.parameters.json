@@ -6,7 +6,8 @@
             "value": "nonprod"
         },
         "postgreSQLServerName": {
-            "value": "marianareyesa-dbsrv-dev-test"
+            "value": "marianareyesa-dbsrv-dev-test",
+            "maxLength": 24
         },
         "postgreSQLDatabaseName": {
             "value": "marianareyesa-db-dev-test"
