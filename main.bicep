@@ -129,7 +129,7 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
 } 
 
 module staticSite 'ResourceModules-main 2/modules/web/static-site/main.bicep' = {
-  name: '${uniqueString(deployment().name, location)}-test-wssmin'
+  name: '${uniqueString(deployment().name, location)}- static webapp'
   params: {
     // Required parameters
     name: 'TEAM3 webapp'
