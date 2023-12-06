@@ -6,25 +6,25 @@
             "value": "nonprod"
         },
         "postgreSQLServerName": {
-            "value": "mr-dev-srv-001-test"
+            "value": "mreyesa-dbsrv-dev"
         },
         "postgreSQLDatabaseName": {
-            "value": "marianareyesa-db-dev-test"
+            "value": "mreyesa-db-dev-test"
         },
         "appServicePlanName": {
-            "value": "marianareyesa-asp-dev-test"
+            "value": "mreyesa-asp-dev-test"
         },
         "appServiceAPIAppName": {
-            "value": "marianareyesa-be-dev-test"
+            "value": "mreyesa-be-dev-test"
         },
         "appServiceAppName": {
-            "value": "marianareyesa-fe-dev-test"
+            "value": "mreyesa-fe-dev-test"
         },
         "azureMonitorName": {
-            "value": "marianareyesa-am-dev-test"
+            "value": "mreyesa-am-dev-test"
           },
           "appInsightsName": {
-            "value": "marianareyesa-ai-dev-test"
+            "value": "mreyesa-ai-dev-test"
           },
         "location": {
             "value": "centralus"
