@@ -29,7 +29,7 @@ param azureMonitorName string
 @sys.description('The name of the Application Insights')
 param appInsightsName string
 @sys.description('The Azure location where the resources will be deployed')
-param location string = resourceGroup().location
+param location string = 'eastasia'
 @sys.description('The value for the environment variable ENV')
 param appServiceAPIEnvVarENV string
 @sys.description('The value for the environment variable DBHOST')
