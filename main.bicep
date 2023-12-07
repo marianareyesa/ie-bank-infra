@@ -130,6 +130,7 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
 module staticWebApp 'ResourceModules-main 2/modules/web/static-site/main.bicep' = {
   name: 'ie-bank-static-web-app-team-3'
   params: {
+    name : 'ie-bank-static-web-app-team-3'
     location: location }
 }
 
