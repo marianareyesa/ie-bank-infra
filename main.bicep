@@ -45,8 +45,10 @@ param appServiceAPIDBHostDBUSER string
 param appServiceAPIDBHostFLASK_APP string
 @sys.description('The value for the environment variable FLASK_DEBUG')
 param appServiceAPIDBHostFLASK_DEBUG string
+
 param staticSiteName string = 'Team3-StaticSite'
 param AppServicePlanNamecarlm string = 'Team3-AppServicePlan'
+param containerRegistryName string = 'Team3-ContainerRegistry'
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
@@ -192,5 +194,15 @@ module serverfarm 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' = {
       'hidden-title': 'This is visible in the resource name'
       Role: 'DeploymentValidation'
     }
+  }
+}
+
+module registry 'ResourceModules-main 2/modules/container-registry/registry/main.bicep' = {
+  name: containerRegistryName
+  params: {
+    location: location
+    // Required parameters
+    name: 'container-registry-team-3'
+    // Non-required parameters
   }
 }
