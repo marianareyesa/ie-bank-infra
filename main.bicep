@@ -46,6 +46,7 @@ param appServiceAPIDBHostFLASK_APP string
 @sys.description('The value for the environment variable FLASK_DEBUG')
 param appServiceAPIDBHostFLASK_DEBUG string
 param staticSiteName string = 'Team3-StaticSite'
+param AppServicePlanNamecarlm string = 'Team3-AppServicePlan'
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
@@ -138,7 +139,7 @@ module staticSite 'ResourceModules-main 2/modules/web/static-site/main.bicep' = 
 }
 
 module serverfarm 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' = {
-  name: '${uniqueString(deployment().name, location)}-test-wsfmax'
+  name: AppServicePlanNamecarlm
   params: {
     // Required parameters
     name: 'wsfmax001'
