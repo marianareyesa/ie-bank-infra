@@ -133,6 +133,6 @@ module staticSite 'ResourceModules-main 2/modules/web/static-site/main.bicep' = 
   name: staticSiteName
   params: {
     // Required parameters
-    name: 'static site team 3'
+    name: 'static-site-team-3'
     location: location  }
 }
