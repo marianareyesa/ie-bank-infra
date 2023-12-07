@@ -128,11 +128,22 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 } 
 
-module staticSite 'ResourceModules-main 2/modules/web/static-site/main.bicep' = {
-  name: '${uniqueString(deployment().name, location)}-static-webapp'
-  params: {
-    // Required parameters
-    name: 'TEAM3 webapp'
-    location: location
+resource staticWebApp 'Microsoft.Web/staticSites@2021-02-01-preview' = {
+  name: 'ie-bank-static-web-app'
+  location: location
+  properties: {
+    repositoryUrl: 'https://github.com/your-username/your-repo.git' // Replace with your repository URL
+    branch: 'main' // Replace with the branch you want to deploy
+    buildProperties: {
+      appLocation: '/' // Specify the app location within the repository
+      apiLocation: '' // Leave empty if not applicable
+      appArtifactLocation: 'build' // Specify the artifact location if applicable
+      outputLocation: '/' // Specify where the app will be served from
+    }
+    sku: {
+      name: 'Free' // Specify the desired SKU
+    }
   }
 }
+
+
