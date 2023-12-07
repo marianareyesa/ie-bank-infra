@@ -142,7 +142,7 @@ module serverfarm 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' = {
   name: AppServicePlanNamecarlm
   params: {
     // Required parameters
-    name: 'wsfmax001'
+    name: 'App-service-Plan-Team-3'
     location: location
     sku: {
       capacity: '1'
