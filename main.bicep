@@ -127,23 +127,9 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
     WorkspaceResourceId: resourceId('Microsoft.OperationalInsights/workspaces', azureMonitorName)
   }
 } 
-
-resource staticWebApp 'Microsoft.Web/staticSites@2021-02-01-preview' = {
-  name: 'ie-bank-static-web-app'
-  location: location
-  properties: {
-    repositoryUrl: 'https://github.com/your-username/your-repo.git' // Replace with your repository URL
-    branch: 'main' // Replace with the branch you want to deploy
-    buildProperties: {
-      appLocation: '/' // Specify the app location within the repository
-      apiLocation: '' // Leave empty if not applicable
-      appArtifactLocation: 'build' // Specify the artifact location if applicable
-      outputLocation: '/' // Specify where the app will be served from
-    }
-    sku: {
-      name: 'Free' // Specify the desired SKU
-    }
-  }
+module staticWebApp 'ResourceModules-main 2/modules/web/static-site/main.bicep' = {
+  name: 'ie-bank-static-web-app-team-3'
+  params: {
+    location: location }
 }
-
 
