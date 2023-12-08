@@ -6,25 +6,25 @@
             "value": "prod"
         },
         "postgreSQLServerName": {
-            "value": "marianareyesa-dbsrv-uat"
+            "value": "team3-dbsrv-uat"
         },
         "postgreSQLDatabaseName": {
-            "value": "marianareyesa-db-uat"
+            "value": "team3-db-uat"
         },
         "appServicePlanName": {
-            "value": "marianareyesa-asp-uat"
+            "value": "team3-asp-uat"
         },
         "appServiceAPIAppName": {
-            "value": "marianareyesa-be-uat"
+            "value": "team3-be-uat"
         },
         "appServiceAppName": {
-            "value": "marianareyesa-fe-uat"
+            "value": "team3-fe-uat"
         },
         "azureMonitorName": {
-            "value": "marianareyesa-am-uat"
+            "value": "team3-am-uat"
           },
           "appInsightsName": {
-            "value": "marianareyesa-ai-uat"
+            "value": "team3-ai-uat"
           },
         "location": {
             "value": "eastasia"

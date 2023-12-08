@@ -6,25 +6,25 @@
             "value": "nonprod"
         },
         "postgreSQLServerName": {
-            "value": "mreyesa-dbsrv-dev"
+            "value": "team3-dbsrv-dev"
         },
         "postgreSQLDatabaseName": {
-            "value": "mreyesa-db-dev"
+            "value": "team3-db-dev"
         },
         "appServicePlanName": {
-            "value": "mreyesa-asp-dev"
+            "value": "team3-asp-dev"
         },
         "appServiceAPIAppName": {
-            "value": "mreyesa-be-dev"
+            "value": "team3-be-dev"
         },
         "appServiceAppName": {
-            "value": "mreyesa-fe-dev"
+            "value": "team3-fe-dev"
         },
         "azureMonitorName": {
-            "value": "mreyesa-am-dev"
+            "value": "team3-am-dev"
           },
           "appInsightsName": {
-            "value": "mreyesa-ai-dev"
+            "value": "team3-ai-dev"
           },
         "location": {
             "value": "eastasia"
