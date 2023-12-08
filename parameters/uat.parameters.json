@@ -37,6 +37,15 @@
         },
         "appServicePlanNamedtest":{ 
             "value": "team3asp-uat"
+        },
+        "sku": {
+            "value": {
+                "capacity": 2,
+                "family": "S",
+                "name": "S1",
+                "size": "S1",
+                "tier": "Standard"
+              }
         }
     }
     }

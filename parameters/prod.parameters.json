@@ -37,6 +37,15 @@
         },
         "appServicePlanNamedtest":{ 
             "value": "team3asp-prod"
+        },
+        "sku": {
+            "value": {
+                "capacity": 4,
+                "family": "P",
+                "name": "P1",
+                "size": "P1",
+                "tier": "Premium"
+              }
         }
     }
 }

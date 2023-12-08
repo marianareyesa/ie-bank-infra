@@ -49,7 +49,7 @@ param appServiceAPIDBHostFLASK_DEBUG string
 param staticSiteName string 
 param acrname string 
 param appServicePlanNamedtest string
-
+param sku object
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
@@ -155,14 +155,7 @@ module serverfarmdev 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' 
   params: {
     name: appServicePlanNamedtest
     location: location 
-    sku:{
-      capacity: 1
-      family: 'B'
-      name: 'B1'
-      size: 'B1'
-      tier: 'Basic'
-    } 
+    sku:sku
     reserved: true
   }
 }
-

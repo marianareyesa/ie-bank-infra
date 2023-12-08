@@ -37,6 +37,15 @@
         },
         "appServicePlanNamedtest": {
             "value": "team3asp-dev"
+        },
+        "sku": {
+            "value": {
+                "capacity": 1,
+                "family": "B",
+                "name": "B1",
+                "size": "B1",
+                "tier": "Basic"
+              }
         }
     }
 }
