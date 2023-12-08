@@ -23,9 +23,6 @@
         "azureMonitorName": {
             "value": "team3-am-prod"
           },
-          "appInsightsName": {
-            "value": "team3-ai-prod"
-          },
         "location": {
             "value": "eastasia"
         },
@@ -44,7 +41,7 @@
                 "family": "P",
                 "name": "P1",
                 "size": "P1",
-                "tier": "Premium"
+                "tier": "Standard"
               }
         }
     }

@@ -23,9 +23,6 @@
         "azureMonitorName": {
             "value": "team3-am-uat"
           },
-          "appInsightsName": {
-            "value": "team3-ai-uat"
-          },
         "location": {
             "value": "eastasia"
         },

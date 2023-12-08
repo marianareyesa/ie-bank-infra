@@ -23,9 +23,6 @@
         "azureMonitorName": {
             "value": "team3-am-dev"
           },
-          "appInsightsName": {
-            "value": "team3-ai-dev"
-          },
         "location": {
             "value": "eastasia"
         },
