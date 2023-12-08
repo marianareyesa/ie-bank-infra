@@ -46,8 +46,9 @@ param appServiceAPIDBHostFLASK_APP string
 @sys.description('The value for the environment variable FLASK_DEBUG')
 param appServiceAPIDBHostFLASK_DEBUG string
 
+@secure()
+param appsrvname string = 'Team3-AppService'
 param staticSiteName string = 'Team3-StaticSite'
-param AppServicePlanNamecarlm string = 'Team3-AppServicePlan'
 param containerRegistryName string = 'Team3-ContainerRegistry'
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
@@ -93,9 +94,10 @@ resource postgresSQLDatabase 'Microsoft.DBforPostgreSQL/flexibleServers/database
   }
 }
 
-module appService 'modules/app-service.bicep' = {
+module appService 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' = {
   name: 'appService'
   params: {
+    name: appsrvname
     location: location
     environmentType: environmentType
     appServiceAppName: appServiceAppName
@@ -138,63 +140,6 @@ module staticSite 'ResourceModules-main 2/modules/web/static-site/main.bicep' = 
     // Required parameters
     name: 'static-site-team-3'
     location: location  }
-}
-
-module serverfarm 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' = {
-  name: AppServicePlanNamecarlm
-  params: {
-    // Required parameters
-    name: 'App-service-Plan-Team-3'
-    location: location
-    sku: {
-      capacity: '1'
-      family: 'S'
-      name: 'S1'
-      size: 'S1'
-      tier: 'Standard'
-    }
-    // Non-required parameters
-    diagnosticSettings: [
-      {
-        eventHubAuthorizationRuleResourceId: '<eventHubAuthorizationRuleResourceId>'
-        eventHubName: '<eventHubName>'
-        metricCategories: [
-          {
-            category: 'AllMetrics'
-          }
-        ]
-        name: 'customSetting'
-        storageAccountResourceId: '<storageAccountResourceId>'
-        workspaceResourceId: '<workspaceResourceId>'
-      }
-    ]
-    lock: {
-      kind: 'CanNotDelete'
-      name: 'myCustomLockName'
-    }
-    roleAssignments: [
-      {
-        principalId: '<principalId>'
-        principalType: 'ServicePrincipal'
-        roleDefinitionIdOrName: 'Owner'
-      }
-      {
-        principalId: '<principalId>'
-        principalType: 'ServicePrincipal'
-        roleDefinitionIdOrName: 'b24988ac-6180-42a0-ab88-20f7382dd24c'
-      }
-      {
-        principalId: '<principalId>'
-        principalType: 'ServicePrincipal'
-        roleDefinitionIdOrName: '<roleDefinitionIdOrName>'
-      }
-    ]
-    tags: {
-      Environment: 'Non-Prod'
-      'hidden-title': 'This is visible in the resource name'
-      Role: 'DeploymentValidation'
-    }
-  }
 }
 
 module registry 'ResourceModules-main 2/modules/container-registry/registry/main.bicep' = {

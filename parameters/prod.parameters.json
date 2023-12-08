@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "environmentType": {
+            "value": "nonprod"
+        },
+        "postgreSQLServerName": {
+            "value": "mreyesa-dbsrv-prod"
+        },
+        "postgreSQLDatabaseName": {
+            "value": "mreyesa-db-prod"
+        },
+        "appServicePlanName": {
+            "value": "mreyesa-asp-prod"
+        },
+        "appServiceAPIAppName": {
+            "value": "mreyesa-be-prod"
+        },
+        "appServiceAppName": {
+            "value": "mreyesa-fe-prod"
+        },
+        "azureMonitorName": {
+            "value": "mreyesa-am-prod"
+          },
+          "appInsightsName": {
+            "value": "mreyesa-ai-prod"
+          },
+        "location": {
+            "value": "eastasia"
+        }
+    }
+}
