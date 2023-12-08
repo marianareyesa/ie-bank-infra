@@ -46,8 +46,8 @@ param appServiceAPIDBHostFLASK_APP string
 @sys.description('The value for the environment variable FLASK_DEBUG')
 param appServiceAPIDBHostFLASK_DEBUG string
 
-param staticSiteName string = 'Team3-StaticSite'
-param acrname string = 'Team3-ACR'
+param staticSiteName string = 'Team3StaticSite'
+param acrname string = 'Team3ACR'
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
@@ -131,3 +131,19 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 } 
 
+module staticSite 'ResourceModules-main 2/modules/web/static-site/main.bicep' = {
+  name: staticSiteName
+  params: {
+    // Required parameters
+    name: 'static-site-team-3'
+    location: location  }
+}
+
+module registry 'ResourceModules-main 2/modules/container-registry/registry/main.bicep' = {
+  name: acrname
+  params: {
+    name: acrname
+    location: location
+    acrAdminUserEnabled: true
+  }
+}
