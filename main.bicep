@@ -166,34 +166,3 @@ module serverfarmdev 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' 
   }
 }
 
-module serverfarmuat 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' = {
-  name: '${appServicePlanName}-deploy'
-  params: {
-    name: appServicePlanNamedtest
-    location: location 
-    sku: {
-      capacity: 2
-      family: 'S'
-      name: 'S1'
-      size: 'S1'
-      tier: 'Standard'
-    }
-    reserved: true
-  }
-}
-
-module serverfarmprod 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' = {
-  name: '${appServicePlanName}-deploy'
-  params: {
-    name: appServicePlanNamedtest
-    location: location 
-    sku: {
-      capacity: 4
-      family: 'P'
-      name: 'P1'
-      size: 'P1'
-      tier: 'Premium'
-    }
-    reserved: true
-  }
-}
