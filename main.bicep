@@ -131,19 +131,3 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 } 
 
-module staticSite 'ResourceModules-main 2/modules/web/static-site/main.bicep' = {
-  name: staticSiteName
-  params: {
-    // Required parameters
-    name: 'static-site-team-3'
-    location: location  }
-}
-
-module registry 'ResourceModules-main 2/modules/container-registry/registry/main.bicep' = {
-  name: acrname
-  params: {
-    name: acrname
-    location: location
-    acrAdminUserEnabled: true
-  }
-}
