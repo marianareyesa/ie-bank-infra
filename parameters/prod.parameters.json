@@ -38,9 +38,9 @@
         "sku": {
             "value": {
                 "capacity": 4,
-                "family": "P",
-                "name": "P1",
-                "size": "P1",
+                "family": "S",
+                "name": "S1",
+                "size": "S1",
                 "tier": "Standard"
               }
         }
