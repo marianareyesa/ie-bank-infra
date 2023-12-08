@@ -32,7 +32,7 @@
         "acrname": {
             "value": "team3acruat"
         },
-        "staticsiteName": {
+        "staticSiteName": {
             "value": "team3-staticsite-uat"
         },
         "appServicePlanNamedtest":{ 
