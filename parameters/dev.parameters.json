@@ -28,6 +28,15 @@
           },
         "location": {
             "value": "eastasia"
+        },
+        "acrname": {
+            "value": "team3acr-dev"
+        },
+        "staticsiteName": {
+            "value": "team3-staticsite-dev"
+        },
+        "appServiceAppNamedev": {
+            "value": "team3asp-dev"
         }
     }
 }

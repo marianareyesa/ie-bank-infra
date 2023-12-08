@@ -46,8 +46,11 @@ param appServiceAPIDBHostFLASK_APP string
 @sys.description('The value for the environment variable FLASK_DEBUG')
 param appServiceAPIDBHostFLASK_DEBUG string
 
-param staticSiteName string = 'Team3StaticSite'
-param acrname string = 'Team3ACR'
+param staticSiteName string 
+param acrname string 
+param appServicePlanNamedev string
+param appServicePlanNameuat string
+param appServicePlanNameprod string
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
@@ -145,5 +148,53 @@ module registry 'ResourceModules-main 2/modules/container-registry/registry/main
     name: acrname
     location: location
     acrAdminUserEnabled: true
+  }
+}
+
+module serverfarmdev 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' = {
+  name: '${appServicePlanName}-deploy'
+  params: {
+    name: appServicePlanNamedev
+    location: location 
+    sku:{
+      capacity: 1
+      family: 'B'
+      name: 'B1'
+      size: 'B1'
+      tier: 'Basic'
+    } 
+    reserved: true
+  }
+}
+
+module serverfarmuat 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' = {
+  name: '${appServicePlanName}-deploy'
+  params: {
+    name: appServicePlanNameuat
+    location: location 
+    sku: {
+      capacity: 2
+      family: 'S'
+      name: 'S1'
+      size: 'S1'
+      tier: 'Standard'
+    }
+    reserved: true
+  }
+}
+
+module serverfarmprod 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' = {
+  name: '${appServicePlanName}-deploy'
+  params: {
+    name: appServicePlanNameprod
+    location: location 
+    sku: {
+      capacity: 4
+      family: 'P'
+      name: 'P1'
+      size: 'P1'
+      tier: 'Premium'
+    }
+    reserved: true
   }
 }
