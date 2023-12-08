@@ -35,7 +35,7 @@
         "staticsiteName": {
             "value": "team3-staticsite-prod"
         },
-        "appServiceAppNameprod":{ 
+        "appServicePlanNamedtest":{ 
             "value": "team3asp-prod"
         }
     }
