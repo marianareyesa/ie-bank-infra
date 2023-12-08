@@ -46,10 +46,8 @@ param appServiceAPIDBHostFLASK_APP string
 @sys.description('The value for the environment variable FLASK_DEBUG')
 param appServiceAPIDBHostFLASK_DEBUG string
 
-@secure()
-param appsrvname string = 'Team3-AppService'
 param staticSiteName string = 'Team3-StaticSite'
-param containerRegistryName string = 'Team3-ContainerRegistry'
+param acrname string = 'Team3-ACR'
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
@@ -94,10 +92,9 @@ resource postgresSQLDatabase 'Microsoft.DBforPostgreSQL/flexibleServers/database
   }
 }
 
-module appService 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' = {
+module appService 'modules/app-service.bicep' = {
   name: 'appService'
   params: {
-    name: appsrvname
     location: location
     environmentType: environmentType
     appServiceAppName: appServiceAppName
@@ -143,11 +140,10 @@ module staticSite 'ResourceModules-main 2/modules/web/static-site/main.bicep' = 
 }
 
 module registry 'ResourceModules-main 2/modules/container-registry/registry/main.bicep' = {
-  name: containerRegistryName
+  name: acrname
   params: {
+    name: acrname
     location: location
-    // Required parameters
-    name: 'container-registry-team-3'
-    // Non-required parameters
+    acrAdminUserEnabled: true
   }
 }
