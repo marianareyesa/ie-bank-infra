@@ -51,7 +51,7 @@ param acrname string
 param appServicePlanNamedtest string
 param sku object
 param keyVaultName string
-param logAnalyticsWorkspace string = '${uniqueString(resourceGroup().id)}la'
+//param logAnalyticsWorkspace string = '${uniqueString(resourceGroup().id)}la'
 //param logAnalyticsWorkspaceId string
 targetScope = 'resourceGroup'
 param acrSku string = 'Basic'
