@@ -187,7 +187,7 @@ module serverfarmdev 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' 
 
 // HERE HERE HERE
 
-resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' existing = {
+/*resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' existing = {
   name: logAnalyticsWorkspace
 }
 
