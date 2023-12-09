@@ -140,7 +140,7 @@ module staticSite 'ResourceModules-main 2/modules/web/static-site/main.bicep' = 
     // Required parameters
     name: 'static-site-team-3'
     location: location
-
+    
     // Configuration for front-end framework
     buildProperties: {
       vue: {
