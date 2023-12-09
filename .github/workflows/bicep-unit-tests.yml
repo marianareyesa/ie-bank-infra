@@ -11,6 +11,10 @@ on:
 
 env:
   LOCATION: "eastasia"
+  SUBSCRIPTION_ID: e0b9cada-61bc-4b5a-bd7a-52c606726b3b
+  AZURE_CLIENT_ID: D2E433B8-666F-4F15-A463-CE610CB0AD8B
+  AZURE_TENANT_ID: 5ca2bc70-353c-4d1f-b7d7-7f2b2259df68
+
   
 #Special permissions required for OIDC authentication
 permissions:
@@ -30,12 +34,12 @@ jobs:
       uses: actions/checkout@v3
 
     # Authenticate to Az CLI using OIDC
- #   - name: 'Az CLI login'
-  #    uses: azure/login@v1
-   #   with:
-    #    client-id: ${{ secrets.AZURE_CLIENT_ID }}
-     #   tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-      #  subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    - name: 'Az CLI login'
+      uses: azure/login@v1
+      with:
+        client-id: ${{ env.AZURE_CLIENT_ID }}
+        tenant-id: ${{ env.AZURE_TENANT_ID }}
+        subscription-id: ${{ env.SUBSCRIPTION_ID }}
 
     # Checks that all Bicep configuration files adhere to a canonical format
     - name: Bicep Lint
