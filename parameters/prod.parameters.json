@@ -46,6 +46,9 @@
         },
         "appInsightsName": {
             "value": "team3-ai-prod"
+        },
+        "keyVaultName": {
+            "value": "team3-kv-prod"
         }
     }
 }
