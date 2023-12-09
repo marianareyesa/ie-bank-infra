@@ -139,7 +139,18 @@ module staticSite 'ResourceModules-main 2/modules/web/static-site/main.bicep' = 
   params: {
     // Required parameters
     name: 'static-site-team-3'
-    location: location  }
+    location: location
+
+    // Configuration for front-end framework
+    buildProperties: {
+      vue: {
+        BuildPresets: 'Vue.js'
+        appLocation: 'default'
+        apiLocation: ''
+        appArtifactLocation: 'default'
+      }
+    }
+  }
 }
 
 module registry 'ResourceModules-main 2/modules/container-registry/registry/main.bicep' = {
