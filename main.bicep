@@ -50,7 +50,7 @@ param staticSiteName string
 param acrname string 
 param appServicePlanNamedtest string
 param sku object
-param keyvaultname string
+param keyVaultName string
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
@@ -165,7 +165,7 @@ module keyvault 'ResourceModules-main 2/modules/key-vault/vault/main.bicep' = {
   name: '${uniqueString(deployment().name, location)}-test-kvvmin'
   params: {
     // Required parameters
-    name: keyvaultname
+    name: keyVaultName
     location: location
 }
 }
