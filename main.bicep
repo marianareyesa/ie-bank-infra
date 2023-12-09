@@ -159,3 +159,12 @@ module serverfarmdev 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' 
     reserved: true
   }
 }
+
+module keyvault 'ResourceModules-main 2/modules/key-vault/vault/main.bicep' = {
+  name: '${uniqueString(deployment().name, location)}-test-kvvmin'
+  params: {
+    // Required parameters
+    name: 'kvvmin002'
+    location: location
+}
+}
