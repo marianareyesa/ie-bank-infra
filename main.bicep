@@ -53,13 +53,15 @@ param sku object
 param keyVaultName string
 param logAnalyticsWorkspace string = '${uniqueString(resourceGroup().id)}la'
 //param logAnalyticsWorkspaceId string
-var activityLogDiagnosticSettingsName = 'export-activity-log'
 targetScope = 'resourceGroup'
+param acrSku string = 'Basic'
+/*
 param actionGroupName string = 'On-Call Team'
 var actionGroupEmail = 'team3@oncall.com'
 param activityLogAlertName string = '${uniqueString(resourceGroup().id)}-alert'
 param actionGroupName2 string = 'adminactiongroup'
-param acrSku string = 'Basic'
+var activityLogDiagnosticSettingsName = 'export-activity-log'
+*/
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
@@ -196,7 +198,7 @@ resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-previe
     workspaceId: logAnalytics.id
     logs: [
       {
-        category: 'AllMetrics'
+        category: 'PostgreSQLLogs'
         enabled: true
         retentionPolicy: {
           days: 30
