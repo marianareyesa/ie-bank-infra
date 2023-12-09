@@ -52,7 +52,7 @@ param appServicePlanNamedtest string
 param sku object
 param keyVaultName string
 param logAnalyticsWorkspace string = '${uniqueString(resourceGroup().id)}la'
-param logAnalyticsWorkspaceId string
+//param logAnalyticsWorkspaceId string
 var activityLogDiagnosticSettingsName = 'export-activity-log'
 targetScope = 'resourceGroup'
 param actionGroupName string = 'On-Call Team'
@@ -207,7 +207,7 @@ resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-previe
   }
 }
 
-resource subscriptionActivityLog 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+/*resource subscriptionActivityLog 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
   name: activityLogDiagnosticSettingsName
   properties: {
     workspaceId: logAnalyticsWorkspaceId
@@ -246,7 +246,7 @@ resource subscriptionActivityLog 'Microsoft.Insights/diagnosticSettings@2021-05-
       }
     ]
   }
-}
+}*/
 
 
 
