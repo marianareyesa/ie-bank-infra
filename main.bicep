@@ -270,7 +270,7 @@ resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-previe
   name: actionGroupName2
 }*/
 
-resource activityLogAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
+/*resource activityLogAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
   name: activityLogAlertName
   location: 'Global'
   properties: {
@@ -301,9 +301,9 @@ resource activityLogAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
       subscription().id
     ]
   }
-}
+}*/
 
-resource resourceHealthAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
+/*resource resourceHealthAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
   name: activityLogAlertName
   location: 'global'
   properties: {
@@ -326,7 +326,7 @@ resource resourceHealthAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' =
       ]
     }
   }
-}
+}*/
 
 
 
