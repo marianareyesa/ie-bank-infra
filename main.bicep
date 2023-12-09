@@ -51,6 +51,15 @@ param acrname string
 param appServicePlanNamedtest string
 param sku object
 param keyVaultName string
+param logAnalyticsWorkspace string = '${uniqueString(resourceGroup().id)}la'
+param logAnalyticsWorkspaceId string
+var activityLogDiagnosticSettingsName = 'export-activity-log'
+targetScope = 'resourceGroup'
+param actionGroupName string = 'On-Call Team'
+var actionGroupEmail = 'team3@oncall.com'
+param activityLogAlertName string = '${uniqueString(resourceGroup().id)}-alert'
+param actionGroupName2 string = 'adminactiongroup'
+param acrSku string = 'Basic'
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
@@ -140,7 +149,7 @@ module staticSite 'ResourceModules-main 2/modules/web/static-site/main.bicep' = 
     // Required parameters
     name: 'static-site-team-3'
     location: location
-    
+
     // Configuration for front-end framework
     buildProperties: {
       vue: {
@@ -158,6 +167,7 @@ module registry 'ResourceModules-main 2/modules/container-registry/registry/main
   params: {
     name: acrname
     location: location
+    acrSku: acrSku
     acrAdminUserEnabled: true
   }
 }
@@ -172,6 +182,155 @@ module serverfarmdev 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' 
   }
 }
 
+
+// HERE HERE HERE
+
+resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' existing = {
+  name: logAnalyticsWorkspace
+}
+
+resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: serverfarmdev.name
+  scope: postgresSQLServer
+  properties: {
+    workspaceId: logAnalytics.id
+    logs: [
+      {
+        category: 'AllMetrics'
+        enabled: true
+        retentionPolicy: {
+          days: 30
+          enabled: true 
+        }
+      }
+    ]
+  }
+}
+
+resource subscriptionActivityLog 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: activityLogDiagnosticSettingsName
+  properties: {
+    workspaceId: logAnalyticsWorkspaceId
+    logs: [
+      {
+        category: 'Administrative'
+        enabled: true
+      }
+      {
+        category: 'Security'
+        enabled: true
+      }
+      {
+        category: 'ServiceHealth'
+        enabled: true
+      }
+      {
+        category: 'Alert'
+        enabled: true
+      }
+      {
+        category: 'Recommendation'
+        enabled: true
+      }
+      {
+        category: 'Policy'
+        enabled: true
+      }
+      {
+        category: 'Autoscale'
+        enabled: true
+      }
+      {
+        category: 'ResourceHealth'
+        enabled: true
+      }
+    ]
+  }
+}
+
+
+
+resource supportTeamActionGroup 'Microsoft.Insights/actionGroups@2023-01-01' = {
+  name: actionGroupName
+  location: location
+  properties: {
+    enabled: true
+    groupShortName: actionGroupName
+    emailReceivers: [
+      {
+        name: actionGroupName
+        emailAddress: actionGroupEmail
+        useCommonAlertSchema: true
+      }
+    ]
+  }
+}
+
+resource actionGroup 'Microsoft.Insights/actionGroups@2021-09-01' existing = {
+  name: actionGroupName2
+}
+
+resource activityLogAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
+  name: activityLogAlertName
+  location: 'Global'
+  properties: {
+    condition: {
+      allOf: [
+        {
+          field: 'category'
+          equals: 'Administrative'
+        }
+        {
+          field: 'operationName'
+          equals: 'Microsoft.Resources/deployments/write'
+        }
+        {
+          field: 'resourceType'
+          equals: 'Microsoft.Resources/deployments'
+        }
+      ]
+    }
+    actions: {
+      actionGroups: [
+        {
+          actionGroupId: actionGroup.id
+        }
+      ]
+    }
+    scopes: [
+      subscription().id
+    ]
+  }
+}
+
+resource resourceHealthAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
+  name: activityLogAlertName
+  location: 'global'
+  properties: {
+    condition: {
+      allOf: [
+        {
+          field: 'category'
+          equals: 'ServiceHealth'
+        }
+      ]
+    }
+    scopes: [
+      subscription().id
+    ]
+    actions: {
+      actionGroups: [
+        {
+          actionGroupId: actionGroup.id
+        }
+      ]
+    }
+  }
+}
+
+
+
+// HERE HERE HERE
 module keyvault 'ResourceModules-main 2/modules/key-vault/vault/main.bicep' = {
   name: '${uniqueString(deployment().name, location)}-test-kvvmin'
   params: {
