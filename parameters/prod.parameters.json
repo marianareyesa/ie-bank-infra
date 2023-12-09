@@ -43,6 +43,9 @@
                 "size": "S1",
                 "tier": "Standard"
               }
+        },
+        "appInsightsName": {
+            "value": "team3-ai-prod"
         }
     }
 }

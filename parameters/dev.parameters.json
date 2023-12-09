@@ -43,6 +43,9 @@
                 "size": "B1",
                 "tier": "Basic"
             }
+        },
+        "appInsightsName": {
+            "value": "team3-ai-dev"
         }
     }
 }

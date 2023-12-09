@@ -27,7 +27,7 @@ param appServiceAPIAppName string = 'ie-bank-api-dev'
 @sys.description('The name of the Azure Monitor workspace')
 param azureMonitorName string
 @sys.description('The name of the Application Insights')
-param appInsightsName string = 'team3-appinsights'
+param appInsightsName string 
 @sys.description('The Azure location where the resources will be deployed')
 param location string = resourceGroup().location
 @sys.description('The value for the environment variable ENV')
