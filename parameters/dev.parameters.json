@@ -52,6 +52,9 @@
         },
         "logAnalyticsWorkspace":{
             "value":"team3m-am-dev"
+        },
+        "alertName": {
+            "value": "team3m-alert-dev"
         }
     }
 }
