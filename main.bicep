@@ -51,17 +51,17 @@ param acrname string
 param appServicePlanNamedtest string
 param sku object
 param keyVaultName string
-//param logAnalyticsWorkspace string = '${uniqueString(resourceGroup().id)}la'
-//param logAnalyticsWorkspaceId string
+param logAnalyticsWorkspace string = '${uniqueString(resourceGroup().id)}la'
+param logAnalyticsWorkspaceId string = 'a7923979-4976-44b7-9e82-eca0c997af61'
 targetScope = 'resourceGroup'
 param acrSku string = 'Basic'
-/*
+
 param actionGroupName string = 'On-Call Team'
 var actionGroupEmail = 'team3@oncall.com'
 param activityLogAlertName string = '${uniqueString(resourceGroup().id)}-alert'
 param actionGroupName2 string = 'adminactiongroup'
 var activityLogDiagnosticSettingsName = 'export-activity-log'
-*/
+
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
@@ -187,7 +187,7 @@ module serverfarmdev 'ResourceModules-main 2/modules/web/serverfarm/main.bicep' 
 
 // HERE HERE HERE
 
-/*resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' existing = {
+resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' existing = {
   name: logAnalyticsWorkspace
 }
 
@@ -209,7 +209,7 @@ resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-previe
   }
 }
 
-/*resource subscriptionActivityLog 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+resource subscriptionActivityLog 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
   name: activityLogDiagnosticSettingsName
   properties: {
     workspaceId: logAnalyticsWorkspaceId
@@ -252,7 +252,7 @@ resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-previe
 
 
 
-/*resource supportTeamActionGroup 'Microsoft.Insights/actionGroups@2023-01-01' = {
+resource supportTeamActionGroup 'Microsoft.Insights/actionGroups@2023-01-01' = {
   name: actionGroupName
   location: location
   properties: {
@@ -266,13 +266,13 @@ resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-previe
       }
     ]
   }
-}*/
+}
 
-/*resource actionGroup 'Microsoft.Insights/actionGroups@2021-09-01' existing = {
+resource actionGroup 'Microsoft.Insights/actionGroups@2021-09-01' existing = {
   name: actionGroupName2
-}*/
+}
 
-/*resource activityLogAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
+resource activityLogAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
   name: activityLogAlertName
   location: 'Global'
   properties: {
@@ -303,9 +303,9 @@ resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-previe
       subscription().id
     ]
   }
-}*/
+}
 
-/*resource resourceHealthAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
+resource resourceHealthAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
   name: activityLogAlertName
   location: 'global'
   properties: {
@@ -328,7 +328,7 @@ resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-previe
       ]
     }
   }
-}*/
+}
 
 
 
