@@ -50,9 +50,6 @@
         "keyVaultName": {
             "value": "team3m-kv-prod"
         },
-        "logAnalyticsWorkspace":{
-            "value":"team3m-am-prod"
-        },
         "alertName": {
             "value": "team3m-alert-prod"
         }

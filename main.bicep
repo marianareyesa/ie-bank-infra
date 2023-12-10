@@ -212,36 +212,3 @@ module keyvault 'ResourceModules-main 2/modules/key-vault/vault/main.bicep' = {
     location: location
 }
 }
-
-resource metricAlert 'Microsoft.Insights/metricAlerts@2018-03-01' = {
-  name: alertName
-  location: 'global'
-  tags: {
-    tagName1: 'tagValue1'
-    tagName2: 'tagValue2'
-  }
-  properties: {
-    actions: [
-      {
-        actionGroupId: actionGroupId
-      }
-    ]
-    autoMitigate: false
-    criteria: {
-      'odata.type': 'Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria'
-      // Define your criteria here based on your specific requirements
-      // Example: Use 'metricName' and 'threshold' to define the condition
-    }
-    description: 'Alert description'
-    enabled: true
-    evaluationFrequency: 'PT5M' // Evaluation frequency in ISO 8601 format (e.g., every 5 minutes)
-    scopes: [
-      '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProvider}/{resourceType}/{resourceName}'
-      // Define the scope of the alert based on the Azure resource you want to monitor
-    ]
-    severity: 2 // Severity of the alert (1-4)
-    targetResourceRegion: 'yourResourceRegion'
-    targetResourceType: 'yourResourceType'
-    windowSize: 'PT15M' // Time window for the alert condition (e.g., 15 minutes)
-  }
-}
