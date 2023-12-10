@@ -184,7 +184,7 @@ resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-12-01-previ
   name: logAnalyticsWorkspace
 }
 
-resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+resource diagnosticLogsdb 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
   name: 'PostgreSQLLogs'
   scope: postgresSQLServer
   properties: {
@@ -196,6 +196,22 @@ resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-previe
       }
     ]
     logAnalyticsDestinationType: 'Dedicated'
+  }
+}
+
+resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' existing = {
+  name: 'appServicePlanName'
+}
+
+resource diagnosticLogsasp 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: 'AppServicePlanLogs'
+  scope: appServicePlan
+  properties: {
+    workspaceId: logAnalytics.id
+    logs: [{
+      category: 'AppServiceLogs'
+      enabled: true
+    }]
   }
 }
 
