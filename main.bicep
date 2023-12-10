@@ -215,7 +215,7 @@ module keyvault 'ResourceModules-main 2/modules/key-vault/vault/main.bicep' = {
 
 resource metricAlert 'Microsoft.Insights/metricAlerts@2018-03-01' = {
   name: alertName
-  location: location
+  location: 'global'
   tags: {
     tagName1: 'tagValue1'
     tagName2: 'tagValue2'
