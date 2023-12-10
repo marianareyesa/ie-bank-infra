@@ -210,7 +210,7 @@ resource diagnosticLogsasp 'Microsoft.Insights/diagnosticSettings@2021-05-01-pre
     workspaceId: logAnalytics.id
     logs: [
       {
-        category: 'AppServiceHTTPLogs'
+        category: 'AppServicePlanLogs'
         enabled: true
       }
     ]
