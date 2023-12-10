@@ -6,34 +6,34 @@
             "value": "prod"
         },
         "postgreSQLServerName": {
-            "value": "team3test-dbsrv-prod"
+            "value": "team3-dbsrv-prod"
         },
         "postgreSQLDatabaseName": {
-            "value": "team3test-db-prod"
+            "value": "team3-db-prod"
         },
         "appServicePlanName": {
-            "value": "team3test-asp-prod"
+            "value": "team3-asp-prod"
         },
         "appServiceAPIAppName": {
-            "value": "team3test-be-prod"
+            "value": "team3-be-prod"
         },
         "appServiceAppName": {
-            "value": "team3test-fe-prod"
+            "value": "team3-fe-prod"
         },
         "azureMonitorName": {
-            "value": "team3test-am-prod"
+            "value": "team3-am-prod"
           },
         "location": {
-            "value": "eastus2"
+            "value": "eastasia"
         },
         "acrname": {
-            "value": "team3testacrprod"
+            "value": "team3acrprod"
         },
         "staticSiteName": {
-            "value": "team3test-staticsite-prod"
+            "value": "team3-staticsite-prod"
         },
         "appServicePlanNamedtest":{ 
-            "value": "team3testasp-prod"
+            "value": "team3asp-prod"
         },
         "sku": {
             "value": {
@@ -45,10 +45,10 @@
               }
         },
         "appInsightsName": {
-            "value": "team3test-ai-prod"
+            "value": "team3-ai-prod"
         },
         "keyVaultName": {
-            "value": "team3test-kv-prod"
+            "value": "team3-kv-prod"
         }
     }
 }
