@@ -200,7 +200,7 @@ resource diagnosticLogsdb 'Microsoft.Insights/diagnosticSettings@2021-05-01-prev
 }
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' existing = {
-  name: serverfarmdev.name
+  name: '${appServicePlanName}-deploy'
 }
 
 resource diagnosticLogsasp 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
