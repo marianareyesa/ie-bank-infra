@@ -51,7 +51,7 @@ param acrname string
 param appServicePlanNamedtest string
 param sku object
 param keyVaultName string
-param logAnalyticsWorkspace string = '${uniqueString(resourceGroup().id)}la'
+param logAnalyticsWorkspace string = 'ie-bank-log-analytics-test'
 //param logAnalyticsWorkspaceId string = 'a7923979-4976-44b7-9e82-eca0c997af61'
 targetScope = 'resourceGroup'
 param acrSku string = 'Basic'
@@ -192,7 +192,7 @@ resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-12-01-previ
 }
 
 resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
-  name: serverfarmdev.name
+  name: 'PostgreSQLLogs'
   scope: postgresSQLServer
   properties: {
     workspaceId: logAnalytics.id
