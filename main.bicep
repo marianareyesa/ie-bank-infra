@@ -252,7 +252,7 @@ resource subscriptionActivityLog 'Microsoft.Insights/diagnosticSettings@2021-05-
 
 
 
-resource supportTeamActionGroup 'Microsoft.Insights/actionGroups@2023-01-01' = {
+/*resource supportTeamActionGroup 'Microsoft.Insights/actionGroups@2023-01-01' = {
   name: actionGroupName
   location: location
   properties: {
@@ -270,7 +270,7 @@ resource supportTeamActionGroup 'Microsoft.Insights/actionGroups@2023-01-01' = {
 
 resource actionGroup 'Microsoft.Insights/actionGroups@2021-09-01' existing = {
   name: actionGroupName2
-}
+}*/
 
 resource activityLogAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
   name: activityLogAlertName
