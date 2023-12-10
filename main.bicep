@@ -200,14 +200,12 @@ resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-previe
       {
         category: 'PostgreSQLLogs'
         enabled: true
-        retentionPolicy: {
-          days: 30
-          enabled: true 
-        }
       }
     ]
+    logAnalyticsDestinationType: 'Dedicated'
   }
 }
+
 
 /*resource subscriptionActivityLog 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
   name: activityLogDiagnosticSettingsName
