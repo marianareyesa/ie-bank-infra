@@ -56,10 +56,10 @@ param logAnalyticsWorkspaceId string = 'a7923979-4976-44b7-9e82-eca0c997af61'
 targetScope = 'resourceGroup'
 param acrSku string = 'Basic'
 
-param actionGroupName string = 'On-Call Team'
+/*param actionGroupName string = 'On-Call Team'
 var actionGroupEmail = 'team3@oncall.com'
 param activityLogAlertName string = '${uniqueString(resourceGroup().id)}-alert'
-param actionGroupName2 string = 'adminactiongroup'
+param actionGroupName2 string = 'adminactiongroup'*/
 var activityLogDiagnosticSettingsName = 'export-activity-log'
 
 
