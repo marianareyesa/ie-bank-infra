@@ -51,7 +51,7 @@ param acrname string
 param appServicePlanNamedtest string
 param sku object
 param keyVaultName string
-param logAnalyticsWorkspace string = 'ie-bank-log-analytics-test'
+param logAnalyticsWorkspace string = 'team3m-am-dev'
 //param logAnalyticsWorkspaceId string = 'a7923979-4976-44b7-9e82-eca0c997af61'
 targetScope = 'resourceGroup'
 param acrSku string = 'Basic'
