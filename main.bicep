@@ -54,8 +54,6 @@ param keyVaultName string
 param logAnalyticsWorkspace string 
 targetScope = 'resourceGroup'
 param acrSku string = 'Basic'
-param actionGroupId string = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/actionGroups/{actionGroupName}'
-param alertName string 
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
@@ -199,8 +197,6 @@ resource diagnosticLogsdb 'Microsoft.Insights/diagnosticSettings@2021-05-01-prev
     logAnalyticsDestinationType: 'Dedicated'
   }
 }
-
-
 
 
 // HERE HERE HERE
