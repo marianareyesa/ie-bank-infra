@@ -199,23 +199,6 @@ resource diagnosticLogsdb 'Microsoft.Insights/diagnosticSettings@2021-05-01-prev
   }
 }
 
-resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' existing = {
-  name: appServicePlanNamedtest
-}
-
-resource diagnosticLogsasp 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
-  name: 'AppServicePlanLogs'
-  scope: appServicePlan
-  properties: {
-    workspaceId: logAnalytics.id
-    logs: [
-      {
-        enabled: true
-      }
-    ]
-    //metrics: [] 
-  }
-}
 
 
 
