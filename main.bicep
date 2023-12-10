@@ -208,12 +208,16 @@ resource diagnosticLogsasp 'Microsoft.Insights/diagnosticSettings@2021-05-01-pre
   scope: appServicePlan
   properties: {
     workspaceId: logAnalytics.id
-    logs: [{
-      category: 'AppServiceLogs'
-      enabled: true
-    }]
+    logs: [
+      {
+        category: 'AppServiceLogs'
+        enabled: true
+      }
+    ]
+    //metrics: [] 
   }
 }
+
 
 
 // HERE HERE HERE
