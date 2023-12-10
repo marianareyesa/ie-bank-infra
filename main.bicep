@@ -305,7 +305,7 @@ resource activityLogAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
   }
 }
 
-resource resourceHealthAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
+/*resource resourceHealthAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
   name: activityLogAlertName
   location: 'global'
   properties: {
@@ -328,7 +328,7 @@ resource resourceHealthAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' =
       ]
     }
   }
-}
+}*/
 
 
 
