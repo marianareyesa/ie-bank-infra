@@ -52,7 +52,7 @@ param appServicePlanNamedtest string
 param sku object
 param keyVaultName string
 param logAnalyticsWorkspace string = '${uniqueString(resourceGroup().id)}la'
-param logAnalyticsWorkspaceId string = 'a7923979-4976-44b7-9e82-eca0c997af61'
+//param logAnalyticsWorkspaceId string = 'a7923979-4976-44b7-9e82-eca0c997af61'
 targetScope = 'resourceGroup'
 param acrSku string = 'Basic'
 
@@ -60,7 +60,7 @@ param acrSku string = 'Basic'
 var actionGroupEmail = 'team3@oncall.com'
 param activityLogAlertName string = '${uniqueString(resourceGroup().id)}-alert'
 param actionGroupName2 string = 'adminactiongroup'*/
-var activityLogDiagnosticSettingsName = 'export-activity-log'
+//var activityLogDiagnosticSettingsName = 'export-activity-log'
 
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
