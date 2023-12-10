@@ -2,6 +2,7 @@ name: ie-bank-infra
 
 on: [push, workflow_dispatch]
 
+
 env:
   RESOURCE_GROUP_DEV: aguadamillas_students_1
   RESOURCE_GROUP_UAT: aguadamillas_students_2
