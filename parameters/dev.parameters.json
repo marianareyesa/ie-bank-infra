@@ -49,6 +49,12 @@
         },
         "keyVaultName": {
             "value": "team3m-kv-dev"
+        },
+        "logAnalyticsWorkspaceId":{
+            "value": "/subscriptions/e0b9cada-61bc-4b5a-bd7a-52c606726b3b/resourcegroups/aguadamillas_students_2/providers/microsoft.operationalinsights/workspaces/team3m-ai-dev"
+        },
+        "logAnalyticsWorkspace":{
+            "value":"team3m-am-dev"
         }
     }
 }

@@ -51,16 +51,11 @@ param acrname string
 param appServicePlanNamedtest string
 param sku object
 param keyVaultName string
-param logAnalyticsWorkspace string = 'team3m-am-dev'
-//param logAnalyticsWorkspaceId string = 'a7923979-4976-44b7-9e82-eca0c997af61'
+param logAnalyticsWorkspace string 
 targetScope = 'resourceGroup'
 param acrSku string = 'Basic'
-
-/*param actionGroupName string = 'On-Call Team'
-var actionGroupEmail = 'team3@oncall.com'
-param activityLogAlertName string = '${uniqueString(resourceGroup().id)}-alert'
-param actionGroupName2 string = 'adminactiongroup'*/
-//var activityLogDiagnosticSettingsName = 'export-activity-log'
+var activityLogDiagnosticSettingsName = 'export-activity-log'
+param logAnalyticsWorkspaceId string 
 
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
@@ -207,7 +202,7 @@ resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-previe
 }
 
 
-/*resource subscriptionActivityLog 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+resource subscriptionActivityLog 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
   name: activityLogDiagnosticSettingsName
   properties: {
     workspaceId: logAnalyticsWorkspaceId
@@ -247,86 +242,6 @@ resource diagnosticLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-previe
     ]
   }
 }
-
-
-
-/*resource supportTeamActionGroup 'Microsoft.Insights/actionGroups@2023-01-01' = {
-  name: actionGroupName
-  location: location
-  properties: {
-    enabled: true
-    groupShortName: actionGroupName
-    emailReceivers: [
-      {
-        name: actionGroupName
-        emailAddress: actionGroupEmail
-        useCommonAlertSchema: true
-      }
-    ]
-  }
-}
-
-resource actionGroup 'Microsoft.Insights/actionGroups@2021-09-01' existing = {
-  name: actionGroupName2
-}*/
-
-/*resource activityLogAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
-  name: activityLogAlertName
-  location: 'Global'
-  properties: {
-    condition: {
-      allOf: [
-        {
-          field: 'category'
-          equals: 'Administrative'
-        }
-        {
-          field: 'operationName'
-          equals: 'Microsoft.Resources/deployments/write'
-        }
-        {
-          field: 'resourceType'
-          equals: 'Microsoft.Resources/deployments'
-        }
-      ]
-    }
-    actions: {
-      actionGroups: [
-        {
-          actionGroupId: actionGroup.id
-        }
-      ]
-    }
-    scopes: [
-      subscription().id
-    ]
-  }
-}*/
-
-/*resource resourceHealthAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
-  name: activityLogAlertName
-  location: 'global'
-  properties: {
-    condition: {
-      allOf: [
-        {
-          field: 'category'
-          equals: 'ServiceHealth'
-        }
-      ]
-    }
-    scopes: [
-      subscription().id
-    ]
-    actions: {
-      actionGroups: [
-        {
-          actionGroupId: actionGroup.id
-        }
-      ]
-    }
-  }
-}*/
 
 
 
