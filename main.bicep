@@ -272,7 +272,7 @@ resource actionGroup 'Microsoft.Insights/actionGroups@2021-09-01' existing = {
   name: actionGroupName2
 }*/
 
-resource activityLogAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
+/*resource activityLogAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
   name: activityLogAlertName
   location: 'Global'
   properties: {
@@ -303,7 +303,7 @@ resource activityLogAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
       subscription().id
     ]
   }
-}
+}*/
 
 /*resource resourceHealthAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' = {
   name: activityLogAlertName
