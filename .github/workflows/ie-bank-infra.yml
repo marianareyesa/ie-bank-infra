@@ -1,6 +1,14 @@
 name: ie-bank-infra
 
-on: [push, workflow_dispatch]
+on: 
+  push:
+    branches:
+    - main
+    - mariana_test
+  pull_request:
+    branches:
+    - main
+  workflow_dispatch:
 
 
 env:
@@ -25,7 +33,7 @@ jobs:
       run: az bicep build --file ./main.bicep
 
   deploy-dev:
-#   if: github.ref == 'refs/heads/dev'
+    if: github.ref == 'refs/heads/mariana_test'
     runs-on: ubuntu-latest
     needs: build
     environment:
